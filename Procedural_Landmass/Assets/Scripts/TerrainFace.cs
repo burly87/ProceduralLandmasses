@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class TerrainFace : MonoBehaviour
 {
+    ShapeGenerator shapeGenerator;
     private Mesh mesh;
     private int resolution;
     private Vector3 localUp;                // normal
     private Vector3 axisA, axisB;           // to generate the other 2 axis from localUp
 
-    public TerrainFace(Mesh mesh, int resolution, Vector3 localUp)
+    public TerrainFace(ShapeGenerator shapeGenerator, Mesh mesh, int resolution, Vector3 localUp)
     {
+        this.shapeGenerator = shapeGenerator;
         this.mesh = mesh;
         this.resolution = resolution;
         this.localUp = localUp;
@@ -34,7 +36,7 @@ public class TerrainFace : MonoBehaviour
                 Vector2 percent = new Vector2(x, y) / (resolution - 1);
                 Vector3 pointOnUnitCube = localUp + (percent.x - 0.5f) * 2 * axisA + (percent.y - 0.5f) * 2 * axisB;
                 Vector3 pointOnUnitSphere = pointOnUnitCube.normalized; // make cube a sphere by normalizing it - all same distance to center
-                vertices[i] = pointOnUnitSphere;
+                vertices[i] = shapeGenerator.CalculatePointOnPlanet(pointOnUnitSphere);
 
                 //getting the triangles with 4 vertices
                 if (x != resolution - 1 && y != resolution - 1)

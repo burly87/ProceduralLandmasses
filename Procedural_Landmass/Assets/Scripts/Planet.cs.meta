@@ -3,7 +3,9 @@ guid: 3d0b1923805cd964f9495b8e154bb13e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shapeSettings: {fileID: 11400000, guid: 04ed6b0a947d0ba47993f139d9bb536a, type: 2}
+  - colorSettings: {fileID: 11400000, guid: 340de8e074ab6a847baef9ae3ba05910, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
